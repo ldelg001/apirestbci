@@ -1,0 +1,25 @@
+CREATE TABLE IF NOT EXISTS user
+(
+	iduser UUID NOT NULL,
+	name VARCHAR(40) NOT NULL,
+	email VARCHAR(40) NOT NULL,
+	password VARCHAR(40) NOT NULL,
+	datecreated TIMESTAMP,
+	datemodified TIMESTAMP,
+	datelast_login TIMESTAMP,
+	token VARCHAR(1000),
+	isactive BOOLEAN,
+	PRIMARY KEY(iduser) 
+);
+
+CREATE TABLE IF NOT EXISTS phones
+(
+	idphone INT NOT NULL,
+	number INT NOT NULL,
+	citycode INT NOT NULL,
+	contrycode INT NOT NULL,
+	iduser UUID NOT NULL,
+	FOREIGN KEY (iduser) REFERENCES user(iduser) ON DELETE CASCADE ON UPDATE CASCADE,
+	PRIMARY KEY(idphone)
+);
+ 
